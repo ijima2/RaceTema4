@@ -388,9 +388,16 @@ head(gradebook)
 ```
 34. Consideremos el caso de una observación almacenada en varias tablas. Observa los datos almacenados en `failed` y `passed` con la información de los alumnos que suspeden (calificaciones C,D,E,F) y los que aprueban (calificaciones A, B). Debes unir ambos conjuntos en uno que contenga una columna adicional llamada `status` que indicará `passed` o `failed` según la situación de cada alumno, puedes usar la función `bind_rows`.
 ```{r}
+failed <- students4 %>%
+  filter(final %in% c("C", "D", "E", "F")) %>%
+  mutate(status = "failed")
 
+passed <- students4 %>%
+  filter(final %in% c("A", "B")) %>%
+  mutate(status = "passed")
 
-
+students_status <- bind_rows(failed, passed)
+head(students_status)
 ```
 # Pongamos todo en común.
 
