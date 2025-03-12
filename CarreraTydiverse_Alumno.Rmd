@@ -492,15 +492,21 @@ update(this_moment, hours = 21, minutes = 32, seconds = 21)
   Cuando consideramos zonas horarias, peridos que incluyen años bisiestos, etc. El manejo de fecha requiere de librerías como __lubridate__ para facilitar estas tareas.
   
 ```{r}
-
-
-
-
-
-
-
-
-
+nyc <- now(tzone = "America/New_York")
+salida <- nyc + days(2)
+salida
+salida <- update(salida, hour = 17, minute = 34)
+salida
+llegada_nyc <- salida + hours(15) + minutes(50)
+llegada_nyc
+llegada_hk <- with_tz(llegada_nyc, tzone = "Asia/Hong_Kong")
+llegada_hk
+fecha <- ymd("2008-06-17", tzone = "Asia/Singapore")
+fecha
+intervalo <- interval(fecha, llegada_hk)
+intervalo
+periodo <- as.period(intervalo)
+periodo
 ```
   
   
