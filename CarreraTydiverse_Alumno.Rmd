@@ -426,18 +426,9 @@ head(sat_tidy)
 ```
 37. Representa gráficamente el conjunto obtenido para mostrar las diferencias entre hombres y mujeres, en las diferentes pruebas para cada una de las franjas de calificación.
 ```{r}
-
-
-
-
-
-
-
-
-
-
-
-
+sat_tidy %>% ggplot(aes(x = score_range, y = prop, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(.~ part)
 ```
 
 
