@@ -274,9 +274,10 @@ cran %>%
 26. Añade una columna llamada `size_mb` que contenga el tamaño de cada descarga en megabytes.
 
 ```{r}
-
-
-
+cran %>%
+  select(ip_id, country, package, size) %>%
+  mutate(size_mb = size / 2^20) %>%
+  print()
 ```
 
 27. Selecciona aquellas descargas cuyo tamaño es menor o igual que 0.5 Mbytes
